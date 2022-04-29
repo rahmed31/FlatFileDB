@@ -46,7 +46,7 @@ public class Table {
             for (int i = 0; i < rows.size(); i++) {
                 sb.append("|\t");
                 for (int j : colIndices) {
-                    sb.append(rows.get(i).getData(j) + "\t");
+                    sb.append(rows.get(i).getElement(j) + "\t");
                 }
                 sb.append("|\n");
             }
@@ -77,6 +77,8 @@ public class Table {
     public String toString() {
 
         StringBuilder sb = new StringBuilder();
+
+        sb.append("Table Name: " + this.tableName + "\n");
         sb.append("|\t");
 
         for (int k = 0; k < colNames.size(); k++) {
@@ -88,6 +90,8 @@ public class Table {
         for (int i = 0; i < rows.size(); i++) {
             sb.append(rows.get(i).toString() + "\n");
         }
+
+        sb.append("\n");
 
         return sb.toString();
 
