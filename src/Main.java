@@ -1,4 +1,3 @@
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Scanner;
@@ -11,13 +10,13 @@ public class Main {
 
         Database database = new Database("MyDatabase");
 
-        try (PrintWriter writer = new PrintWriter(new File(database.getName() + ".txt"))) {
+        try (PrintWriter writer = new PrintWriter(database.getName() + ".txt")) {
             ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
             service.scheduleAtFixedRate(() -> {
                 if (!database.checkSave()) {
                     database.updateTmp();
                     writer.flush();
-                    writer.println(database.toString());
+                    writer.println(database);
                 }
             },10L,10L, TimeUnit.SECONDS);
 

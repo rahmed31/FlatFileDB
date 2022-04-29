@@ -9,11 +9,11 @@ public class Table {
 
     public Table(String name, String contents) {
         this.tableName = name;
-        this.colNames = new ArrayList<String>(List.of(contents.split(",")));
+        this.colNames = new ArrayList<>(List.of(contents.split(",")));
         rows = new ArrayList<>();
     }
 
-    private class Projection {
+    private static class Projection {
         private List<String> colNames;
         private int[] colIndices;
         private List<Row> rows;
@@ -37,17 +37,17 @@ public class Table {
             StringBuilder sb = new StringBuilder();
             sb.append("|\t");
 
-            for (int k = 0; k < colNames.size(); k++) {
-                sb.append(colNames.get(k) + "\t");
-            }
+            for (String colName : colNames)
+                sb.append(colName).append("\t");
 
             sb.append("|\n");
 
-            for (int i = 0; i < rows.size(); i++) {
+            for (Row row : rows) {
                 sb.append("|\t");
-                for (int j : colIndices) {
-                    sb.append(rows.get(i).getElement(j) + "\t");
-                }
+
+                for (int j : colIndices)
+                    sb.append(row.getElement(j)).append("\t");
+
                 sb.append("|\n");
             }
 
@@ -78,18 +78,16 @@ public class Table {
 
         StringBuilder sb = new StringBuilder();
 
-        sb.append("Table Name: " + this.tableName + "\n");
+        sb.append("Table Name: ").append(this.tableName).append("\n");
         sb.append("|\t");
 
-        for (int k = 0; k < colNames.size(); k++) {
-            sb.append(colNames.get(k) + "\t");
-        }
+        for (String colName : colNames)
+            sb.append(colName).append("\t");
 
         sb.append("|\n");
 
-        for (int i = 0; i < rows.size(); i++) {
-            sb.append(rows.get(i).toString() + "\n");
-        }
+        for (Row row : rows)
+            sb.append(row.toString()).append("\n");
 
         sb.append("\n");
 

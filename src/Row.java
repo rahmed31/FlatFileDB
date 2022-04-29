@@ -1,20 +1,13 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Row {
-    List<String> myRowContents;
+    List<String> myRowContents = new ArrayList<>();
 
-    public Row(String[] args) {
-        myRowContents = new ArrayList<String>();
+    public Row(String[] args) {Collections.addAll(myRowContents, args);}
 
-        for (int i = 0; i < args.length; i++) {
-            myRowContents.add(args[i]);
-        }
-    }
-
-    public String getElement(int i) {
-        return myRowContents.get(i);
-    }
+    public String getElement(int i) {return myRowContents.get(i);}
 
     @Override
     public String toString() {
@@ -22,9 +15,8 @@ public class Row {
 
         sb.append("|\t");
 
-        for (int i = 0; i < myRowContents.size(); i++) {
-            sb.append(myRowContents.get(i) + "\t");
-        }
+        for (String myRowContent : myRowContents)
+            sb.append(myRowContent).append("\t");
 
         sb.append("|");
 

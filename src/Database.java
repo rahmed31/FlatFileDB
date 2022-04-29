@@ -1,10 +1,5 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class Database {
 
@@ -14,28 +9,18 @@ public class Database {
 
     public Database(String name) {
         this.name = name;
-        myDatabase = new ArrayList<Table>();
+        myDatabase = new ArrayList<>();
     }
 
-    public String getName() {
-        return this.name;
-    }
+    public String getName() {return this.name;}
 
-    public void add(Table table) {
-        myDatabase.add(table);
-    }
+    public void add(Table table) {myDatabase.add(table);}
 
-    public void delete(Table table) {
-        myDatabase.remove(table);
-    }
+    public void delete(Table table) {myDatabase.remove(table);}
 
     public Table get(String table) {
 
-        Iterator it = myDatabase.iterator();
-
-        while(it.hasNext()) {
-            Table t = (Table)it.next();
-
+        for (Table t : myDatabase) {
             if (t.getTableName().equals(table)) {
                 return t;
             }
@@ -53,16 +38,8 @@ public class Database {
         return sb.toString();
     }
 
-    public boolean checkSave() {
+    public boolean checkSave() {return myDatabase.toString().equals(this.tmp);}
 
-        if (myDatabase.toString().equals(this.tmp))
-            return true;
-
-        return false;
-    }
-
-    public void updateTmp() {
-        this.tmp = this.toString();
-    }
+    public void updateTmp() {this.tmp = this.toString();}
 
 }
