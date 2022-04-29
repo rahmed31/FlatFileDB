@@ -16,7 +16,7 @@ public class Database {
 
     public void add(Table table) {myDatabase.add(table);}
 
-    public void delete(Table table) {myDatabase.remove(table);}
+    public void drop(Table table) {myDatabase.remove(table);}
 
     public Table get(String table) {
 
