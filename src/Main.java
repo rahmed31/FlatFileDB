@@ -1,5 +1,9 @@
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Scanner;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -15,10 +19,9 @@ public class Main {
             service.scheduleAtFixedRate(() -> {
                 if (!database.checkSave()) {
                     database.updateTmp();
-                    writer.flush();
                     writer.println(database);
                 }
-            },10L,10L, TimeUnit.SECONDS);
+            },10L,5L, TimeUnit.SECONDS);
 
             Scanner input = new Scanner(System.in);
             String inputData;

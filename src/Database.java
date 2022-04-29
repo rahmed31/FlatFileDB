@@ -21,9 +21,8 @@ public class Database {
     public Table get(String table) {
 
         for (Table t : myDatabase) {
-            if (t.getTableName().equals(table)) {
+            if (t.getTableName().equals(table))
                 return t;
-            }
         }
 
         return null;

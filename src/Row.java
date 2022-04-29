@@ -3,9 +3,12 @@ import java.util.Collections;
 import java.util.List;
 
 public class Row {
-    List<String> myRowContents = new ArrayList<>();
+    List<String> myRowContents;
 
-    public Row(String[] args) {Collections.addAll(myRowContents, args);}
+    public Row(String[] args) {
+        myRowContents = new ArrayList<>();
+        Collections.addAll(myRowContents, args);
+    }
 
     public String getElement(int i) {return myRowContents.get(i);}
 
@@ -15,8 +18,10 @@ public class Row {
 
         sb.append("|\t");
 
-        for (String myRowContent : myRowContents)
-            sb.append(myRowContent).append("\t");
+        for (String myRowContent : myRowContents) {
+            String e = String.format("%-5s", myRowContent);
+            sb.append(e).append("\t");
+        }
 
         sb.append("|");
 

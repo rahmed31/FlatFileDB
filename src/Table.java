@@ -79,10 +79,13 @@ public class Table {
         StringBuilder sb = new StringBuilder();
 
         sb.append("Table Name: ").append(this.tableName).append("\n");
+
         sb.append("|\t");
 
-        for (String colName : colNames)
-            sb.append(colName).append("\t");
+        for (String colName : colNames) {
+            String e = String.format("%-5s", colName);
+            sb.append(e).append("\t");
+        }
 
         sb.append("|\n");
 
