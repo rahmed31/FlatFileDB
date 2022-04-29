@@ -1,42 +1,58 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
     public static void main(String[] args) {
 
-        Scanner input = new Scanner(System.in);
+        Database database = new Database("MyDatabase");
 
-        Database database = new Database();
+        try (PrintWriter writer = new PrintWriter(new File(database.getName() + ".txt"))) {
+            ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
+            service.scheduleAtFixedRate(() -> {
+                if (!database.checkSave()) {
+                    database.updateTmp();
+                    writer.flush();
+                    writer.println(database.toString());
+                }
+            },10L,10L, TimeUnit.SECONDS);
 
-        String inputData;
+            Scanner input = new Scanner(System.in);
+            String inputData;
 
-        while(!(inputData = input.nextLine()).equals("exit")) {
-            String contents = inputData.toLowerCase();
+            while(!(inputData = input.nextLine()).equals("exit")) {
+                String contents = inputData.toLowerCase();
 
-            if (contents.contains("create")) {
-                String tname = inputData.split(" ")[2];
-                String columns = inputData.substring(inputData.indexOf("(")+1, inputData.indexOf(")"));
+                if (contents.contains("create")) {
+                    String tname = inputData.split(" ")[2];
+                    String columns = inputData.substring(inputData.indexOf("(")+1, inputData.indexOf(")"));
 
-                database.add(new Table(tname, columns));
+                    database.add(new Table(tname, columns));
+                }
+                else if (contents.contains("insert")) {
+                    String tname = inputData.trim().split(" ")[2];
+                    String[] inputs = inputData.substring(inputData.indexOf("(")+1, inputData.indexOf(")")).split(",");
 
-                System.out.println("Creating database");
+                    database.get(tname).insert(inputs);
+                }
+                else if (contents.contains("select")) {
+                    String tname = inputData.split(" ")[3];
+                    String[] vars = inputData.split(" ")[1].split(",");
+
+                    System.out.println(database.get(tname).select(vars));
+
+                } else {System.out.println("Command not supported.");}
+
             }
-            else if (contents.contains("insert")) {
-                String tname = inputData.trim().split(" ")[2];
-                String[] inputs = inputData.substring(inputData.indexOf("(")+1, inputData.indexOf(")")).split(",");
 
-                database.get(tname).insert(inputs);
+            service.shutdownNow();
 
-                System.out.println("Inserting into database");
-            }
-            else if (contents.contains("select")) {
-                String tname = inputData.split(" ")[3];
-                String[] vars = inputData.split(" ")[1].split(",");
-
-                System.out.println(database.get(tname).select(vars));
-
-                System.out.println("Selecting from database");
-            } else {System.out.println("Command not supported.");}
-
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
 
         System.out.println("Done");
