@@ -12,7 +12,7 @@ public class Row {
         }
     }
 
-    public String getData(int i) {
+    public String getElement(int i) {
         return myRowContents.get(i);
     }
 
