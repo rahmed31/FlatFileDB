@@ -1,6 +1,4 @@
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Scanner;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -30,7 +28,10 @@ public class Main {
                     String tname = inputData.split(" ")[2];
                     String columns = parse(inputData);
 
-                    database.add(new Table(tname, columns));
+                    if (database.get(tname) != null)
+                        System.out.println("Sorry, this table name already exists");
+                    else database.add(new Table(tname, columns));
+
                 }
                 else if (contents.contains("insert")) {
                     String tname = inputData.trim().split(" ")[2];
@@ -44,7 +45,11 @@ public class Main {
 
                     System.out.println(database.get(tname).select(vars));
 
-                } else {System.out.println("Command not supported.");}
+                }
+                else if (contents.contains("drop")) {
+                    String tname = inputData.split(" ")[2];
+                    database.drop(database.get(tname));
+                }else {System.out.println("Command not supported.");}
 
             }
 
