@@ -3,12 +3,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class Row {
-    List<String> myRowContents;
+    List<String> myRowContents = new ArrayList<>();
 
-    public Row(String[] args) {
-        myRowContents = new ArrayList<>();
-        Collections.addAll(myRowContents, args);
-    }
+    public Row(String[] args) {Collections.addAll(myRowContents, args);}
 
     public String getElement(int i) {return myRowContents.get(i);}
 
