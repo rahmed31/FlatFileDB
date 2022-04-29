@@ -1,7 +1,4 @@
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Scanner;
@@ -31,13 +28,13 @@ public class Main {
 
                 if (contents.contains("create")) {
                     String tname = inputData.split(" ")[2];
-                    String columns = inputData.substring(inputData.indexOf("(")+1, inputData.indexOf(")"));
+                    String columns = parse(inputData);
 
                     database.add(new Table(tname, columns));
                 }
                 else if (contents.contains("insert")) {
                     String tname = inputData.trim().split(" ")[2];
-                    String[] inputs = inputData.substring(inputData.indexOf("(")+1, inputData.indexOf(")")).split(",");
+                    String[] inputs = parse(inputData).split(",");
 
                     database.get(tname).insert(inputs);
                 }
@@ -58,5 +55,9 @@ public class Main {
         }
 
         System.out.println("Done");
+    }
+
+    public static String parse(String inputData) {
+        return inputData.substring(inputData.indexOf("(")+1, inputData.indexOf(")"));
     }
 }
