@@ -5,7 +5,7 @@ public class Database {
 
     List <Table> myDatabase;
     public String name;
-    private String tmp = "";
+    private String tmp = null;
 
     public Database(String name) {
         this.name = name;
@@ -39,6 +39,6 @@ public class Database {
 
     public boolean checkSave() {return myDatabase.toString().equals(this.tmp);}
 
-    public void updateTmp() {this.tmp = this.toString();}
+    public void updateTmp() {this.tmp = myDatabase.toString();}
 
 }
