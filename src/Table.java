@@ -37,16 +37,20 @@ public class Table {
             StringBuilder sb = new StringBuilder();
             sb.append("|\t");
 
-            for (String colName : colNames)
-                sb.append(colName).append("\t");
+            for (String colName : colNames) {
+                String e = String.format("%-5s", colName);
+                sb.append(e).append("\t");
+            }
 
             sb.append("|\n");
 
             for (Row row : rows) {
                 sb.append("|\t");
 
-                for (int j : colIndices)
-                    sb.append(row.getElement(j)).append("\t");
+                for (int j : colIndices) {
+                    String e = String.format("%-5s", row.getElement(j));
+                    sb.append(e).append("\t");
+                }
 
                 sb.append("|\n");
             }
