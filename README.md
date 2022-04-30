@@ -43,7 +43,7 @@ Finally, the user interacts with this program via their command line interface.
 
 ## Project Design
 
-`Dependency Injection` is used as the primary programming techqnique for this software. 
+`Dependency Injection` is used as the primary programming technique for this software. 
 
 The design is described as follows:
 
