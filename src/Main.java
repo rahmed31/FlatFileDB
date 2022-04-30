@@ -13,10 +13,11 @@ public class Main {
             ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
             service.scheduleAtFixedRate(() -> {
                 if (!database.checkSave()) {
-                    database.updateTmp();
                     writer.println(database);
-                }
-            },10L,5L, TimeUnit.SECONDS);
+                    writer.flush();
+                    database.updateTmp();
+                } else {writer.flush();}
+            },10L,2L, TimeUnit.SECONDS);
 
             Scanner input = new Scanner(System.in);
             String inputData;
@@ -44,7 +45,6 @@ public class Main {
                     String[] vars = inputData.split(" ")[1].split(",");
 
                     System.out.println(database.get(tname).select(vars));
-
                 }
                 else if (contents.contains("drop")) {
                     String tname = inputData.split(" ")[2];
