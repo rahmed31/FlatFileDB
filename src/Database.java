@@ -1,5 +1,6 @@
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +9,7 @@ public class Database {
     private List <Table> myDatabase;
     private String name;
     private String tmp = null;
+    private String dbDirectory = null;
 
     public Database(String name) {
         this.name = name;
@@ -43,7 +45,13 @@ public class Database {
 
     public void updateTmp() {this.tmp = myDatabase.toString();}
 
+    public String getDirectory() {
+        return dbDirectory;
+    }
+
     public void writeToDatabase() {
+        this.dbDirectory = Path.of("" + this.name).toAbsolutePath().toString();
+
         try (PrintWriter writer = new PrintWriter(this.name + ".txt")) {
             writer.println(this);
             this.updateTmp();
