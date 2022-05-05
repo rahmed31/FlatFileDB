@@ -61,6 +61,8 @@ public class Table {
 
     public void setTableName(String tableName) {this.tableName = tableName;}
 
+    public void rename(String name) {this.tableName = name;}
+
     public String getTableName() {return this.tableName;}
 
     public void setColNames(ArrayList colNames) {this.colNames = colNames;}

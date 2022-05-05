@@ -18,6 +18,8 @@ public class Database {
 
     public String getName() {return this.name;}
 
+    public void rename(String name) {this.name = name;}
+
     public void add(Table table) {myDatabase.add(table);}
 
     public void drop(Table table) {myDatabase.remove(table);}
