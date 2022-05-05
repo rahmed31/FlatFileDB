@@ -3,7 +3,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Row {
-    List<String> myRowContents = new ArrayList<>();
+    private List<String> myRowContents = new ArrayList<>();
 
     public Row(String[] args) {Collections.addAll(myRowContents, args);}
 

@@ -3,8 +3,8 @@ import java.util.List;
 
 public class Table {
 
-    public String tableName;
-    public List<String> colNames;
+    private String tableName;
+    private List<String> colNames;
     private List<Row> rows;
 
     public Table(String name, String contents) {
