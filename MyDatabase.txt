@@ -1,0 +1,6 @@
+Table Name: person
+|	name 	phone	age  	|
+|	john 	7734566474	35   	|
+|	mary 	3124567343	28   	|
+
+
