@@ -1,10 +1,12 @@
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Database {
 
-    List <Table> myDatabase;
-    public String name;
+    private List <Table> myDatabase;
+    private String name;
     private String tmp = null;
 
     public Database(String name) {
@@ -41,4 +43,12 @@ public class Database {
 
     public void updateTmp() {this.tmp = myDatabase.toString();}
 
+    public void writeToDatabase() {
+        try (PrintWriter writer = new PrintWriter(this.name + ".txt")) {
+            writer.println(this);
+            this.updateTmp();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 }
