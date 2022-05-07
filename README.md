@@ -58,7 +58,7 @@ The advantages of this are:
 
 An `inner class` called `Projection` is utilized inside of the `Table` class as a mechanism of security. Like a normal relational database management system (RDBMS) such as MySQL, users cannot explicitly create their own projections of certain columns within a table. This can only be done through the use of the "SELECT" keyword. Thus, the when a user selects certain columns of a table to be viewed, a `Projection` object is created within the `Table` class, which is then printed out to the console. 
 
-Finally, a number of `lambda` and `stream` expressions are used within this project. The scheduled thread in the `Main` class and the toString() method in the `Database` class were viable candidates to utilize lambdas and/or streams within the project.
+Finally, a number of `lambda` and `stream` expressions are used within this project. The scheduled thread in the `Main` class and the overridden toString() method in the `Database` class were viable candidates to utilize lambdas and/or streams within the project.
 
 ## How to Run the Program
 
