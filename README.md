@@ -47,7 +47,7 @@ Finally, the user interacts with this program via their command line interface.
 
 The design is described as follows:
 
-A `Database` object depends on different `Table`s, and each `Table` consists of an *n* amount `Row`s. Each row is inherently able to hold an *n* amount of elements according to how the user specifies his or her tables.
+A `Database` object depends on different `Tables`, and each `Table` consists of an *n* amount `Rows`. Each row is inherently able to hold an *n* amount of elements according to how the user specifies his or her tables.
 
 The advantages of this are:
 
