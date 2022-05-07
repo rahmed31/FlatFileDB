@@ -44,7 +44,7 @@ public class Main {
             else if (contents.contains("drop")) {
                 String t_name = inputData.split(" ")[2];
                 database.drop(database.get(t_name));
-            }else {System.out.println("Command not supported.");}
+            } else {System.out.println("Command not supported.");}
 
         }
 
