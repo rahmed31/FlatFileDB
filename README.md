@@ -1,7 +1,7 @@
 # Flat File Database System
 ## Introduction
 
-This repository details the creation and use of a primitive flat file database system that stores an entire database in a single file through the utilization of scheduled threads.
+This repository details the creation of a primitive flat file database system using scheduled threads and how to use it.
 
 ## What it does
 
