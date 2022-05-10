@@ -5,7 +5,7 @@ This repository details the creation of a primitive flat file database system us
 
 ## What it does
 
-As of now, the database accepts four basic commands:
+As of now, the database accepts five basic commands:
 
 `CREATE TABLE <table_name> (column1,column 2,column 3,....)`
 
@@ -14,6 +14,8 @@ As of now, the database accepts four basic commands:
 `INSERT INTO <table_name> (value1,value2,....)`
 
 `DROP TABLE <table_name>`
+
+`EXIT`, to terminate the program
 
 Therefore, the user can create as many tables as s/he wants, insert values for whatever table s/he wants, and can select any number of columns from an individual table.
 
@@ -36,6 +38,8 @@ For example, two tables can be created, and the user can insert and select infor
 8. `SELECT name,address FROM company`
 
 9. `DROP TABLE person`
+
+10. `EXIT`
 
 Keep in mind, that this is an example and the queries can be executed in whichever order the user likes.
 
