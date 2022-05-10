@@ -35,7 +35,7 @@ For example, two tables can be created, and the user can insert and select infor
 
 8. `SELECT name,address FROM company`
 
-9. 'DROP TABLE person'
+9. `DROP TABLE person`
 
 Keep in mind, that this is an example and the queries can be executed in whichever order the user likes.
 
