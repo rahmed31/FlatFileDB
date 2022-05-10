@@ -35,6 +35,8 @@ For example, two tables can be created, and the user can insert and select infor
 
 8. `SELECT name,address FROM company`
 
+9. `DROP TABLE person`
+
 Keep in mind, that this is an example and the queries can be executed in whichever order the user likes.
 
 As the user continues to add information to different tables - or remove tables - within their database, the database is continuously rebuilt and written into a file in the same directory as the project and saved under `MyDatabase.txt`. This is done through the use of a scheduled thread. 
