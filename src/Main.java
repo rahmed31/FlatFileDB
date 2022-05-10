@@ -18,7 +18,7 @@ public class Main {
         Scanner input = new Scanner(System.in);
         String inputData;
 
-        while(!(inputData = input.nextLine()).equals("exit")) {
+        while(!(inputData = input.nextLine()).equalsIgnoreCase("exit")) {
             String contents = inputData.toLowerCase();
 
             if (contents.contains("create")) {
